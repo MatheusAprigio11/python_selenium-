@@ -16,7 +16,7 @@ class Web:
        }
         self.driver = webdriver.Chrome()
         self.driver.maximize_window()
-        self.abrir_site()
+        self.abrir_site("dois_vinte_dois")
 
     def abrir_site(self, dois_vinte_dois):
         sorteados = []
@@ -33,6 +33,7 @@ class Web:
 
             n1, n2, n3, n4, n5, n6 = sorteados
             inserir_num(dois_vinte_dois, nSorteio, n1, n2, n3, n4, n5, n6)
+            sorteados.clear()
         
 def inserir_num(dois_vinte_dois, nSorteio, n1, n2, n3, n4, n5, n6):
     inserir_num = f"""INSERT INTO {dois_vinte_dois}(nSorteio, n1, n2, n3, n4, n5, n6)
@@ -42,5 +43,6 @@ def inserir_num(dois_vinte_dois, nSorteio, n1, n2, n3, n4, n5, n6):
     cursor = conexao.cursor()
     cursor.execute(inserir_num)
     conexao.commit()
+
 
 
