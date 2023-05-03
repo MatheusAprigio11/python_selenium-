@@ -2,7 +2,6 @@ from tkinter import *
 from tkinter import ttk
 from read import listar_sorteio
 from anos import todos_anos
-
 janela = Tk()
 
 class Aplicacao():
@@ -36,14 +35,12 @@ class Aplicacao():
         self.frame_2.place(relx=0.03, rely=0.60, relwidth=0.94, relheight=0.35)
 
     def botoes(self):
-        # self.btBuscar = Button(self.frame_0, text='Buscar', bg='red', command=self.sel)
-        # self.btBuscar.place(relx=0.15, rely=0.25, relwidth=0.10, relheight=0.50)
 
         self.btLimpar = Button(self.frame_0, text='Limpar', bg='red', command=self.clear)
-        self.btLimpar.place(relx=0.28, rely=0.25, relwidth=0.10, relheight=0.50)
+        self.btLimpar.place(relx=0.67, rely=0.25, relwidth=0.10, relheight=0.50)
 
-        self.btRead = Button(self.frame_0, text='Read', bg='red', command=self.ler_sorteio)
-        self.btRead.place(relx=0.55, rely=0.25, relwidth=0.10, relheight=0.50)
+        self.btRead = Button(self.frame_0, text='Apresentar', bg='red', command=self.ler_sorteio)
+        self.btRead.place(relx=0.77, rely=0.25, relwidth=0.10, relheight=0.50)
 
     
     def comboBox(self):
@@ -51,8 +48,8 @@ class Aplicacao():
         self.lb_anos.pack()
         self.cb_anos=ttk.Combobox(self.frame_0,values=todos_anos)
         self.cb_anos.pack()
-        self.cb_anos.place(relx=0.78, rely=0.30, relwidth=0.2, relheight=0.4)
-        self.lb_anos.place(relx=0.78, rely=0.02, relwidth=0.2, relheight=0.4)
+        self.cb_anos.place(relx=0.88, rely=0.30, relwidth=0.1, relheight=0.4)
+        self.lb_anos.place(relx=0.88, rely=0.02, relwidth=0.1, relheight=0.4)
 
 
     def inputs(self):
@@ -115,7 +112,8 @@ class Aplicacao():
 
     def ler_sorteio(self):
         self.clear()
-        sorteios = listar_sorteio()
+        ano = self.cb_anos.get()
+        sorteios = listar_sorteio(ano)
         for sorteio in sorteios:
             self.listaCli.insert("", "end", values=sorteio)
 

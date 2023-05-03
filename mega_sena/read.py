@@ -1,11 +1,11 @@
-from connect import conexao
+from connect import con
 
-cursor = conexao.cursor()
+cursor = con.cursor()
 cursor.execute('select database();')
 linha = cursor.fetchone()
 
-def listar_sorteio():
-    sql = 'SELECT * from dois_vinte_dois'
+def listar_sorteio(ano):
+    sql = f'SELECT * from sena{ano}'
     cursor.execute(sql)
     linhas = cursor.fetchall()
     return linhas
